@@ -1,146 +1,97 @@
-import tkinter as tk
-from tkinter import ttk
-from PIL import ImageTk,Image
+from tkinter import *
 
-paths = {"logo" : "img/kijiji.png", "startBtn" : "img/startBtn.png"}
-LARGEFONT =("Verdana", 35)
-  
-class KijijiApp():
-     
-    # __init__ function for class tkinterApp
-    def __init__(self, *args, **kwargs):
-        self.window                 = tk.Tk()
-        self.windowWidth            = self.window.winfo_reqwidth()
-        self.windowHeight           = self.window.winfo_reqheight()
-        self.window['background']   = '#0D0C52'
-        self.window.title("Kijiji AutoBot")
-        # Gets both half the screen width/height and window width/height
-        positionRight   = int(self.window.winfo_screenwidth() / 2 - self.windowWidth)
-        positionDown    = int(self.window.winfo_screenheight() / 2 - self.windowHeight)
+class MultiListbox(Frame):
+    def __init__(self, master, lists):
+        Frame.__init__(self, master)
+        self.lists = []
+        for l,w in lists:
+            frame = Frame(self); frame.pack(side=LEFT, expand=YES, fill=BOTH)
+            Label(frame, text=l, borderwidth=1, relief=RAISED).pack(fill=X)
+            lb = Listbox(frame, width=w, borderwidth=0, selectborderwidth=0,
+                         relief=FLAT, exportselection=FALSE)
+            lb.pack(expand=YES, fill=BOTH)
+            self.lists.append(lb)
+            lb.bind('<B1-Motion>', lambda e, s=self: s._select(e.y))
+            lb.bind('<Button-1>', lambda e, s=self: s._select(e.y))
+            lb.bind('<Leave>', lambda e: 'break')
+            lb.bind('<B2-Motion>', lambda e, s=self: s._b2motion(e.x, e.y))
+            lb.bind('<Button-2>', lambda e, s=self: s._button2(e.x, e.y))
+        frame = Frame(self); frame.pack(side=LEFT, fill=Y)
+        Label(frame, borderwidth=1, relief=RAISED).pack(fill=X)
+        sb = Scrollbar(frame, orient=VERTICAL, command=self._scroll)
+        sb.pack(expand=YES, fill=Y)
+        self.lists[0]['yscrollcommand']=sb.set
 
-        # Positions the window in the center of the page.
-        self.window.geometry("+{}+{}".format(positionRight, positionDown))
-        self.window.geometry('568x488')
-         
-        # creating a container
-        container = tk.Frame(self.window) 
-        container.pack(side = "top", fill = "both", expand = True)
-  
-        container.grid_rowconfigure(0, weight = 1)
-        container.grid_columnconfigure(0, weight = 1)
-  
-        # initializing frames to an empty array
-        self.frames = {} 
-  
-        # iterating through a tuple consisting
-        # of the different page layouts
-        for F in (StartPage, Page1, Page2):
-  
-            frame = F(container, self)
-  
-            # initializing frame of that object from
-            # startpage, page1, page2 respectively with
-            # for loop
-            self.frames[F] = frame
-  
-            frame.grid(row = 0, column = 0, sticky ="nsew")
-  
-        self.show_frame(StartPage)
-  
-    # to display the current frame passed as
-    # parameter
-    def show_frame(self, cont):
-        frame = self.frames[cont]
-        frame.tkraise()
-  
-# first window frame startpage
-  
-class StartPage(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-         
-        # label of frame Layout 2
-        label = ttk.Label(self, text ="Startpage", font = LARGEFONT)
-         
-        # putting the grid in its place by using
-        # grid
-        label.grid(row = 0, column = 4, padx = 10, pady = 10)
-  
-        button1 = ttk.Button(self, text ="Page 1",
-        command = lambda : controller.show_frame(Page1))
-     
-        # putting the button in its place by
-        # using grid
-        button1.grid(row = 1, column = 1, padx = 10, pady = 10)
-  
-        ## button to show frame 2 with text layout2
-        button2 = ttk.Button(self, text ="Page 2",
-        command = lambda : controller.show_frame(Page2))
-     
-        # putting the button in its place by
-        # using grid
-        button2.grid(row = 2, column = 1, padx = 10, pady = 10)
-  
-          
-  
-  
-# second window frame page1
-class Page1(tk.Frame):
-     
-    def __init__(self, parent, controller):
-         
-        tk.Frame.__init__(self, parent)
-        label = ttk.Label(self, text ="Page 1", font = LARGEFONT)
-        label.grid(row = 0, column = 4, padx = 10, pady = 10)
-  
-        # button to show frame 2 with text
-        # layout2
-        button1 = ttk.Button(self, text ="StartPage",
-                            command = lambda : controller.show_frame(StartPage))
-     
-        # putting the button in its place
-        # by using grid
-        button1.grid(row = 1, column = 1, padx = 10, pady = 10)
-  
-        # button to show frame 2 with text
-        # layout2
-        button2 = ttk.Button(self, text ="Page 2",
-                            command = lambda : controller.show_frame(Page2))
-     
-        # putting the button in its place by
-        # using grid
-        button2.grid(row = 2, column = 1, padx = 10, pady = 10)
-  
-  
-  
-  
-# third window frame page2
-class Page2(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        label = ttk.Label(self, text ="Page 2", font = LARGEFONT)
-        label.grid(row = 0, column = 4, padx = 10, pady = 10)
-  
-        # button to show frame 2 with text
-        # layout2
-        button1 = ttk.Button(self, text ="Page 1",
-                            command = lambda : controller.show_frame(Page1))
-     
-        # putting the button in its place by
-        # using grid
-        button1.grid(row = 1, column = 1, padx = 10, pady = 10)
-  
-        # button to show frame 3 with text
-        # layout3
-        button2 = ttk.Button(self, text ="Startpage",
-                            command = lambda : controller.show_frame(StartPage))
-     
-        # putting the button in its place by
-        # using grid
-        button2.grid(row = 2, column = 1, padx = 10, pady = 10)
-  
-  
-# Driver Code
-if __name__ == "__main__":
-    app = KijijiApp()
-    app.mainloop()
+    def _select(self, y):
+        row = self.lists[0].nearest(y)
+        self.selection_clear(0, END)
+        self.selection_set(row)
+        return 'break'
+
+    def _button2(self, x, y):
+        for l in self.lists: l.scan_mark(x, y)
+        return 'break'
+
+    def _b2motion(self, x, y):
+        for l in self.lists: l.scan_dragto(x, y)
+        return 'break'
+
+    def _scroll(self, *args):
+        for l in self.lists:
+            apply(l.yview, args)
+
+    def curselection(self):
+        return self.lists[0].curselection(  )
+
+    def delete(self, first, last=None):
+        for l in self.lists:
+            l.delete(first, last)
+
+    def get(self, first, last=None):
+        result = []
+        for l in self.lists:
+            result.append(l.get(first,last))
+        if last: return apply(map, [None] + result)
+        return result
+
+    def index(self, index):
+        self.lists[0].index(index)
+
+    def insert(self, index, *elements):
+        for e in elements:
+            i = 0
+            for l in self.lists:
+                l.insert(index, e[i])
+                i = i + 1
+
+    def size(self):
+        return self.lists[0].size(  )
+
+    def see(self, index):
+        for l in self.lists:
+            l.see(index)
+
+    def selection_anchor(self, index):
+        for l in self.lists:
+            l.selection_anchor(index)
+
+    def selection_clear(self, first, last=None):
+        for l in self.lists:
+            l.selection_clear(first, last)
+
+    def selection_includes(self, index):
+        return self.lists[0].selection_includes(index)
+
+    def selection_set(self, first, last=None):
+        for l in self.lists:
+            l.selection_set(first, last)
+
+if __name__ == '__main__':
+    tk = Tk( )
+    Label(tk, text='MultiListbox').pack( )
+    mlb = MultiListbox(tk, (('Subject', 40), ('Sender', 20), ('Date', 10)))
+    for i in range(1000):
+      mlb.insert(END, 
+          ('Important Message: %d' % i, 'John Doe', '10/10/%04d' % (1900+i)))
+    mlb.pack(expand=YES,fill=BOTH)
+    tk.mainloop(  )
