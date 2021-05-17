@@ -1,17 +1,13 @@
 import json 
 import tkinter as tk
+from tkinter import *
 from tkinter import ttk
-from tkinter import messagebox
 from PIL import ImageTk,Image  
 # import subprocess
 # import threading
 # from selenium.common.exceptions import TimeoutException, WebDriverException
 LARGEFONT =("Verdana", 35)
-PATHS = {"logo" : "img/kijiji.png", "startBtn" : "img/startBtn.png", "searchBtn" : "img/searchBtn.png", "clearBtn" : "img/clear.png",}
-PROVINCES = (
-            ' Alberta', ' British Columbia', ' Manitoba', ' Nova Scotia',
-            ' Ontario', ' Qu\u00e9bec', ' Saskatchewan'
-        )
+PATHS = {"logo" : "img/kijiji.png", "startBtn" : "img/startBtn.png", "searchBtn" : "img/searchBtn.jpg"}
 
 
 # mainApp Window
@@ -24,7 +20,6 @@ class kijijiApp(tk.Tk):
         self.windowHeight           = self.winfo_reqheight()
         self['background']   = '#0D0C52'
         self.title("Kijiji AutoBot")
-        self.resizable(False, False)
         self.window_loop()
         
 
@@ -154,320 +149,63 @@ class FormPage(tk.Frame):
             width=739,
             height=668
         )
-        self.locations = []
-        self.count = 0
-
-        self.position_headerSection()
-        self.position_KeyWordSection()
-        self.position_Dropdowns()
-        self.position_Table()
-        self.position_clearBtn()
-        self.position_searchBtn()
-
-
-     # Function to create and position the text and logo at the center of the window
-    def position_headerSection(self):
-        x_axis = 739 - 420
-        y_axis = 668 - 658
-        self.headerTxt = ttk.Label(
-            self, 
-            background="#0D0C52",
-            foreground = "#FFFFFF",
-            text="KIJIJI AUTOBOT", 
-            font=("Roboto Condensed", 20, "bold")
-        ).place(x=x_axis, y=y_axis)
-
-        self.c2 = tk.Canvas(
-            self, 
-            bg = '#0D0C52',
-            bd = 0,
-            highlightthickness=0,
-            width = 70, 
-            height = 50
-        )
-        x_axis = 739 - 490
-        y_axis = 668 - 668
-        self.img_3 = ImageTk.PhotoImage(Image.open(PATHS["logo"]).resize((42, 42), Image.ANTIALIAS)) 
-        # print(img) 
-        self.c2.create_image(20, 10, anchor="nw", image=self.img_3)
-        self.c2.image = self.img_3
-        self.c2.place(x=x_axis, y=y_axis)
-        self.c2.image = self.img_3
-    
-
-    #Function to create and position keyword Input
-    def position_KeyWordSection(self):
-        x_axis = 739 - 417
-        y_axis = 668 - 598
-        self.keywordLbl = ttk.Label(
-            self, 
-            background="#0D0C52",
-            foreground = "#FFFFFF",
-            text="Keyword :", 
-            font=("Roboto Condensed", 16)
-        ).place(x=x_axis, y=y_axis)
-
-        x_axis = 739 - 699
-        y_axis = 668 - 573
-
-        self.keywordInput = ttk.Entry(
-            self, 
-            background="#0D0C52",
-            foreground = "#0D0C52",
-            font=("Roboto Condensed", 16),
-            width = 54,
-        ).place(x=x_axis, y=y_axis)
-
-        x_axis = 739 - 500
-        y_axis = 668 - 543
-        self.infoLbl = ttk.Label(
-            self, 
-            background="#0D0C52",
-            foreground = "#FFFFFF",
-            text=" Please seperate multiple kewords with a comma :", 
-            font=("Roboto Condensed", 10)
-        ).place(x=x_axis, y=y_axis)
-
-    
-    #Function to create and position provinces and city
-    def position_Dropdowns(self):
-        x_axis = 739 - 620
-        y_axis = 668 - 500
-        self.provinceLbl = ttk.Label(
-            self, 
-            background="#0D0C52",
-            foreground = "#FFFFFF",
-            text=" Province :", 
-            font=("Roboto Condensed", 16)
-        ).place(x=x_axis, y=y_axis)
-
-        x_axis = 739 - 699
-        y_axis = 668 - 475
-        self.provinceInput = ttk.Combobox(
-            self, 
-            background="#0D0C52",
-            foreground = "#0D0C52",
-            text=" Province :", 
-            font=("Roboto Condensed", 16),
-            textvariable=tk.StringVar(), 
-            state="readonly",
-            values = PROVINCES
-        )
-        self.provinceInput.bind("<<ComboboxSelected>>", self.displayCities)
-        self.provinceInput.place(x=x_axis, y=y_axis)
+        #Labels, bottoms and Entry of Information
+        imgLogo = ImageTk.PhotoImage(Image.open(PATHS["logo"]).resize((65, 65)))
+        labelLogo = ttk.Label(self, image=imgLogo, background="#0D0C52")
+        labelLogo.image = imgLogo
+        labelLogo.place(x = 230, y = 0)
+        labelLogo.image = imgLogo        
         
+        titleHead = ttk.Label(self, background="#0D0C52", text ="KIJIJI AUTOBOT", font=("Roboto Condensed", 20, "bold"), foreground = "#FFFFFF")
+        titleHead.place(x = 300, y = 15)
 
-        x_axis = 739 - 200
-        y_axis = 668 - 500
-        self.cityLbl = ttk.Label(
-            self, 
-            background="#0D0C52",
-            foreground = "#FFFFFF",
-            text=" City :", 
-            font=("Roboto Condensed", 16)
-        ).place(x=x_axis, y=y_axis)
+        labelKey = ttk.Label(self, text ="Keyword:", font=("Roboto Condensed", 13, "bold"), background="#0D0C52", foreground = "royalblue")
+        labelKey.place(x = 345, y = 75)        
 
-        x_axis = 739 - 310
-        y_axis = 668 - 475
-        self.cityInput = ttk.Combobox(
-            self, 
-            background="#0D0C52",
-            foreground = "#0D0C52",
-            text=" Province :",
-            textvariable=tk.StringVar(), 
-            state="readonly", 
-            font=("Roboto Condensed", 16)
-        )
-        self.cityInput.bind("<<ComboboxSelected>>", self.ConfirmLocation)
-        self.cityInput.place(x=x_axis, y=y_axis)
+        inputKeyword = Entry(self, width=65, justify="center", font=("Roboto Condensed", 13))
+        inputKeyword.place(x = 80, y = 110)
 
+        labelInfo = ttk.Label(self, text ="Please separate multiple keywords with a comma", font=("Roboto Condensed", 13), background="#0D0C52", foreground = "white")
+        labelInfo.place(x = 200, y = 150)
 
-    # Function to position location tables
-    def position_Table(self):
-        self.style = ttk.Style()
-        self.style.theme_use("clam")
-        self.style.configure(
-            "Treeview",
-            background = "#C4C4C4",
-            foreground = "black",
-            rowheight = 20,
-            fieldbackground = "#C4C4C4",
-        )
+        labelProvice = ttk.Label(self, text = "Province:", font=("Roboto Condensed", 17), background="#0D0C52", foreground = "white")
+        labelProvice.place(x=180, y=190)
 
-        self.style.map (
-            "Treeview",
-            background= [('selected' , '#0D0C52')]
-        )
-        x_axis = 739 - 699
-        y_axis = 668 - 425
+        labelCity = ttk.Label(self, text = "City:", font=("Roboto Condensed", 17), background="#0D0C52", foreground = "white")
+        labelCity.place(x=490, y=190)
 
-        self.tbl = ttk.Treeview(
-            self, 
-            show='headings', 
-            height="10",
-           
-        )
+        inputProvince = Entry(self, width=25, justify="center", font=("Roboto Condensed", 13))
+        inputProvince.place(x = 80, y = 230)
+        
+        inputCity = Entry(self, width=25, justify="center", font=("Roboto Condensed", 13))
+        inputCity.place( x=445, y=230)
+        
+        labelColor = Label(self, width=84, height=17, background="white")
+        labelColor.place(x=80, y=270)
 
-        self.tbl['columns']=('s/n', 'Province', 'City')
-        self.tbl.column('s/n',  width=80, anchor=tk.CENTER)
-        self.tbl.column('Province',  width=272, anchor=tk.CENTER)
-        self.tbl.column('City',  width=272, anchor=tk.CENTER)
+        labelProvice2 = ttk.Label(self, width=24, text = "                Province:", font=("Roboto Condensed", 16), background="lightgray", foreground = "black" )
+        labelProvice2.place(x = 80, y = 270)
 
-        # define headings
-        self.tbl.heading('s/n', text='s/n')
-        self.tbl.heading('Province', text='Province')
-        self.tbl.heading('City', text='City')
+        labelCity2 = ttk.Label(self, width=24, text = "                   City:", font=("Roboto Condensed", 16), background="lightgray", foreground = "black" )
+        labelCity2.place(x = 380, y = 270)
 
-        self.tbl.bind("<Double-1>", self.removeRecord)
+        labelText = Label(self, width=41, height=15, background="lightgray")
+        labelText.place(x=80, y=302)
 
-        self.tbl.place(x=x_axis, y=y_axis)
+        labelText2 = Label(self, width=41, height=15, background="lightgray")
+        labelText2.place(x=380, y=302)
 
-        x_axis = 739 - 70
-        y_axis = 668 - 425
-        self.scrollbar = tk.Scrollbar(
-            self, 
-            bg="#0D0C52",
-            activebackground="#0D0C52",
-            orient=tk.VERTICAL, 
-            command=self.tbl.yview,
-           
-            # height="10",
-        )
-        self.tbl.configure(yscroll=self.scrollbar.set)
-        self.scrollbar.place(x=x_axis, y=y_axis, height="228")
+        buttomClear = Button(self, text="CLEAR ALL RECORDS", relief='flat', bg="navy", font=("Roboto Condensed", 14, "bold"), foreground="white", overrelief="flat")
+        buttomClear.place(x=250, y=550)
 
-
-    #Function to create and position clearbtn btn
-    def position_clearBtn(self):
-        # Placement axis
-        x_axis = 739 - 500
-        y_axis = 668 - 180
-        # Add Image
-        self.img_4 = ImageTk.PhotoImage(Image.open(PATHS["clearBtn"]))
-        # Create button and image
-        self.clearBtn = tk.Button(
-            self, 
-            image=self.img_4,
-            bd = 0,
-            bg="#0D0C52",
-            command=self.clearRecords
-        )
-        self.clearBtn.image = self.img_4
-        self.clearBtn.place(x=x_axis, y=y_axis, height="30")
-        self.clearBtn.image = self.img_4
-
-
-    #Function to create and position search btn
-    def position_searchBtn(self):
-        # Placement axis
-        x_axis = 739 - 470
-        y_axis = 668 - 75
-        # Add Image
-        self.img_5 = ImageTk.PhotoImage(Image.open(PATHS["searchBtn"]))
-        # Create button and image
-        self.searchBtn = tk.Button(
-            self, 
-            image=self.img_5,
-            bd = 0,
-        )
-        self.searchBtn.image = self.img_5
-        self.searchBtn.place(x=x_axis, y=y_axis)
-        self.searchBtn.image = self.img_5
+        imgSearch = ImageTk.PhotoImage(Image.open(PATHS["searchBtn"]).resize((175, 45)))
+        buttonSearch = Button(self, image=imgSearch, relief='flat', bg='#0D0C52')
+        buttonSearch.image = imgSearch
+        buttonSearch.place(x=285, y=600)
+        buttonSearch.image = imgSearch
 
   
-    #Function to display cities on province selection
-    def displayCities(self, event):
         
-        if self.provinceInput.get().strip() == "Alberta":
-            self.cityInput["values"] = (' Calgary', ' Edmonton Area')
-        elif self.provinceInput.get().strip() == "British Columbia":
-            self.cityInput["values"] = (' Greater Vancouver Area', ' Kelowna', ' Nanaimo', ' Victoria',' Whistler' )
-        elif self.provinceInput.get().strip() == "Manitoba":
-            self.cityInput["values"] = ( ' Winnipeg' )
-        elif self.provinceInput.get().strip() == "Nova Scotia":
-            self.cityInput["values"] = (' Halifax')
-        elif self.provinceInput.get().strip() == "Ontario":
-            self.cityInput["values"] = (' Barrie', ' Hamilton', ' Kitchener Area',' Ottawa / Gatineau Area',' Toronto (GTA)' )
-        elif self.provinceInput.get().strip() == "Qu\u00e9bec":
-            self.cityInput["values"] = (' Greater Montr\u00e9al',' Qu\u00e9bec City')
-        elif self.provinceInput.get().strip() == "Saskatchewan":
-            self.cityInput["values"] = (' Regina Area')
-
-
-    #Function to confirm location and input in table
-    def ConfirmLocation(self, event):
-        prv = self.provinceInput.get().strip()
-        cty = self.cityInput.get().strip()
-        check = (prv, cty)
-        msg = " You selected {} as Province and {} as City Location for search, Are You Sure ?".format(prv, cty)
-        if check not in self.locations:
-            self.answer = messagebox.askquestion("Confirm Location", msg)
-         
-            if self.answer.strip() == "yes":
-                self.locations.append(check)
-                self.count += 1
-                loc = (self.count, prv, cty)   
-                # adding data to the treeview
-                self.tbl.insert('', tk.END, values=loc)
-            else :
-                pass
-        else :
-            messagebox.showerror("Error", "Location Already Selected")
-
-
-    #Function to remove a record on double click
-    def removeRecord(self, event):
-        item = self.tbl.selection()
-        remianing = []
-        if len(item) != 0:
-            selected_item = item[0]
-            cnt = 0
-            start = False
-            for i in self.tbl.get_children():
-
-                if i ==  selected_item :
-                    item = self.tbl.item(i)
-                    start = True
-                    print(item["values"][0])
-                    cnt = item["values"][0] - 1
-                    print(cnt)
-                    continue
-                    
-                
-                if start:
-                    item = self.tbl.item(i)
-                    cnt += 1
-                    loc = (cnt, item["values"][1], item["values"][2])
-                    print(loc)
-                    remianing.append(loc)
-                    self.tbl.delete(i)
-
-            self.count = cnt
-            self.tbl.delete(selected_item)
-
-            for loc in remianing:
-                # print(loc)
-                self.tbl.insert('', tk.END, values=loc)
-
-                
-        # print("you clicked on", self.tbl.item(item,"text"))
-
-
-    #Function to clear table data
-    def clearRecords(self):
-        for i in self.tbl.get_children():
-            print(i)
-            self.tbl.delete(i)
-        self.count = 0
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     ws  = kijijiApp()
