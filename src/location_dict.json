@@ -1,0 +1,153 @@
+[
+  {
+    "province_dict":  {
+      "Alberta": "1",
+      "British Columbia": "2",
+      "Manitoba": "3",
+      "New Brunswick": "4",
+      "Newfoundland": "5",
+      "Nova Scotia": "6",
+      "Ontario": "7",
+      "Prince Edward Island": "8",
+      "Qu\u00e9bec": "9",
+      "Saskatchewan": "10",
+      "Territories" : "11"
+    }
+  },
+  {
+    "city_dict": {
+      "1": {
+        "Banff / Canmore": "1",
+        "Calgary": "2",
+        "Edmonton Area": "3",
+        "Fort McMurray": "4",
+        "Grande Prairie": "5",
+        "Lethbridge": "6",
+        "Lloydminster": "7",
+        "Medicine Hat": "8",
+        "Red Deer": "9"
+      },
+      "2": {
+        "Cariboo Area": "1",
+        "Comox Valley Area": "2",
+        "Cowichan Valley / Duncan": "3",
+        "Cranbrook": "4",
+        "Fraser Valley": "5",
+        "Greater Vancouver Area": "6",
+        "Kamloops": "7",
+        "Kelowna": "8",
+        "Nanaimo": "9",
+        "Nelson": "10",
+        "Peace River Area": "11",
+        "Port Alberni / Oceanside": "12",
+        "Port Hardy / Port McNeill": "13",
+        "Powell River District": "14",
+        "Prince George": "15",
+        "Revelstoke": "16",
+        "Skeena-Bulkley Area": "17",
+        "Sunshine Coast": "18",
+        "Vernon": "19",
+        "Victoria": "20",
+        "Whistler": "21"
+      },
+      "3": {
+        "Brandon Area": "1",
+        "Flin Flon": "2",
+        "Thompson": "3",
+        "Winnipeg": "4"
+      },
+      "4": {
+        "Bathurst": "1",
+        "Edmundston": "2",
+        "Fredericton": "3",
+        "Miramichi": "4",
+        "Moncton": "5",
+        "Saint John": "6"
+      },
+      "5": {
+        "Corner Brook": "1",
+        "Gander": "2",
+        "Labrador": "3",
+        "St. John's": "4"
+      },
+      "6": {
+        "Annapolis Valley": "1",
+        "Bridgewater": "2",
+        "Cape Breton": "3",
+        "Halifax": "4",
+        "New Glasgow": "5",
+        "Truro": "6",
+        "Yarmouth": "7"
+      },
+      "7": {
+        "Barrie": "1",
+        "Belleville Area": "2",
+        "Brantford": "3",
+        "Brockville": "4",
+        "Chatham-Kent": "5",
+        "Cornwall": "6",
+        "Guelph": "7",
+        "Hamilton": "8",
+        "Kapuskasing": "9",
+        "Kenora": "10",
+        "Kingston Area": "11",
+        "Kitchener Area": "12",
+        "Leamington": "13",
+        "London": "14",
+        "Muskoka": "15",
+        "Norfolk County": "16",
+        "North Bay": "17",
+        "Ottawa / Gatineau Area": "18",
+        "Owen Sound": "19",
+        "Peterborough Area": "20",
+        "Renfrew County Area": "21",
+        "Sarnia Area": "22",
+        "Sault Ste. Marie": "23",
+        "St. Catharines": "24",
+        "Sudbury": "25",
+        "Thunder Bay": "26",
+        "Timmins": "27",
+        "Toronto (GTA)": "28",
+        "Windsor Region": "29",
+        "Woodstock": "30"
+      },
+      "8": {
+        "Prince Edward Island": "1"
+      },
+      "9": {
+        "Abitibi-T\u00e9miscamingue": "1",
+        "Baie-Comeau": "2",
+        "Centre-du-Quebec": "3",
+        "Chaudi\u00e8re-Appalaches": "4",
+        "Chibougamau / Northern Qu\u00e9bec": "5",
+        "Gasp\u00e9": "6",
+        "Granby": "7",
+        "Greater Montr\u00e9al": "8",
+        "Lanaudi\u00e8re": "9",
+        "Laurentides": "10",
+        "Mauricie": "11",
+        "Qu\u00e9bec City": "12",
+        "Rimouski / Bas-St-Laurent": "13",
+        "Saguenay-Lac-Saint-Jean": "14",
+        "Saint-Hyacinthe": "15",
+        "Saint-Jean-sur-Richelieu": "16",
+        "Sept-\u00celes": "17",
+        "Sherbrooke": "18"
+      },
+      "10": {
+        "La Ronge": "1",
+        "Meadow Lake": "2",
+        "Nipawin": "3",
+        "Prince Albert": "4",
+        "Regina": "5",
+        "Saskatoon": "6",
+        "Swift Current": "7"
+      },
+      "11": {
+        "Northwest Territories": "1",
+        "Nunavut": "2",
+        "Yukon": "3"
+      }
+    }
+  }
+]

@@ -1,0 +1,32 @@
+31-Dec-21 20:10:16 : DEBUG : Scraping Module : Initiating Scraping for : https://www.kijiji.ca
+31-Dec-21 20:10:18 : DEBUG : Scraping Module : Opening Chrome To Start Data Scraping
+31-Dec-21 20:10:18 : DEBUG : Length of Arguments : 4
+31-Dec-21 20:10:18 : DEBUG : Province is : {'1': 'Alberta', '2': 'British Columbia', '3': 'Manitoba', '4': 'New Brunswick', '5': 'Newfoundland', '6': 'Nova Scotia', '7': 'Ontario', '8': 'Prince Edward Island', '9': 'Québec', '10': 'Saskatchewan', '11': 'Territories'}
+31-Dec-21 20:10:18 : INFO : Province Name is : Alberta
+31-Dec-21 20:10:18 : DEBUG : City is : {'name': 'Edmonton Area', 'wanted': {'searchDate': '05/06/2021', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}
+31-Dec-21 20:10:18 : DEBUG : Cities are : {'1': {'name': 'Banff / Canmore', 'wanted': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}, '2': {'name': 'Calgary', 'wanted': {'searchDate': '09/06/2021', 'finalTimestamp': '2021-05-16T23:23:55.000Z'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}, '3': {'name': 'Edmonton Area', 'wanted': {'searchDate': '05/06/2021', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}, '4': {'name': 'Fort McMurray', 'wanted': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}, '5': {'name': 'Grande Prairie', 'wanted': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}, '6': {'name': 'Lethbridge', 'wanted': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}, '7': {'name': 'Lloydminster', 'wanted': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}, '8': {'name': 'Medicine Hat', 'wanted': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}, '9': {'name': 'Red Deer', 'wanted': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}, 'offering': {'searchDate': '20/10/2020', 'finalTimestamp': '0'}}}
+31-Dec-21 20:10:18 : INFO : City Name is : Edmonton Area
+31-Dec-21 20:10:18 : INFO : Date from which Search Will Start : 05/06/2021
+31-Dec-21 20:10:18 : INFO : Timestamp from which Search Will Start : 0
+31-Dec-21 20:16:21 : DEBUG : Scraping Module : Location Set
+31-Dec-21 20:16:21 : DEBUG : Scraping Module : Language Set
+31-Dec-21 20:16:21 : DEBUG : Scraping Module : Searching Keywords Are : ['office']
+31-Dec-21 20:16:21 : DEBUG : Scraping Module : Initiating Search For Keyword : office
+31-Dec-21 20:16:43 : DEBUG : Scraping Module : Waiting for Page to Load : Timeout 10 Seconds
+31-Dec-21 20:17:03 : DEBUG : Scraping Module : Keyword Set
+31-Dec-21 20:17:03 : DEBUG : Scraping Module : Searching for : Wanted Advertisements
+31-Dec-21 20:17:03 : DEBUG : Scraping Module : wanted link is : https://www.kijiji.ca/b-edmonton/office/k0l1700203?radius=50.0&ad=wanted&address=Landscaping+Edmonton+Area%2C+116+Avenue+Northwest%2C+Edmonton%2C+Alberta&ll=53.567492,-113.474151
+31-Dec-21 20:17:09 : DEBUG : Scraping Module : Waiting for Page to Load : Timeout 10 Seconds
+31-Dec-21 20:17:19 : DEBUG : Scraping Module : Wanted Advertisement Type Set
+31-Dec-21 20:17:19 : DEBUG : Scraping Module : Search Result For  : office : is : Showing 1 - 17 of 17 results
+31-Dec-21 20:17:19 : DEBUG : Scraping Module : Total Advertisements Fetched : 17
+31-Dec-21 20:17:19 : DEBUG : Scraping Module : Current Advertisements Fetched : 17
+31-Dec-21 20:17:19 : DEBUG : Scraping Module : Total Pages To Be Parsed : 1
+31-Dec-21 20:17:19 : DEBUG : Scraping Module : Total Pages = 1
+31-Dec-21 20:17:19 : DEBUG : Scraping Module : Configured Search Date is : 2021-06-05
+31-Dec-21 20:17:19 : DEBUG : Total pages : 1
+31-Dec-21 20:17:20 : DEBUG : Scraping Module : Pages Traversed So Far : 1
+31-Dec-21 20:17:20 : DEBUG : Scraping Module : Links Processed So Far : 17
+31-Dec-21 20:17:20 : DEBUG : Scraping Module : Total Links for : office is : 17
+31-Dec-21 20:17:22 : DEBUG : Scraping Module : Starting Data Scraping
+31-Dec-21 20:17:22 : DEBUG : Scraping Module : Final Processing For All Advertisements In Progress
